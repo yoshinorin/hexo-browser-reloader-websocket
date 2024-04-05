@@ -12,9 +12,10 @@ const log = logger({
 export function notifier(this: Hexo) {
   const self = this;
   const config: Config = getOrDefault(self);
-  const wss = makeWss(config);
 
   self.on('server', () => {
+    const wss = makeWss(config);
+
     self.source.on('processAfter', x => {
       log.info(`[Browser Reloader]: file ${x.type} detected - ${x.path}`);
       // NOTE: When there are few articles or pages, reloading the browser may be faster than re-rendering.
