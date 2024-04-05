@@ -19,6 +19,14 @@ export const makeWss = (config: Config) => {
   // TODO: consider log format.
   log.info(`[Browser Reloader]: settings - ${JSON.stringify(config, null, 2)}`);
 
+  wss.on('error', (err) => {
+    log.error(`[Browser Reloader]: ${err}`);
+  });
+
+  wss.on('connection', () => {
+    log.info(`[Browser Reloader]: Connection established.`)
+  });
+
   return wss;
 };
 
