@@ -25,3 +25,7 @@ export const makeWss = (config: Config) => {
 
   return wss;
 };
+
+export const isReady = (status: any): boolean => {
+  return status === WebSocket.OPEN;
+};

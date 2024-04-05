@@ -2,7 +2,7 @@ import type Hexo from 'hexo';
 
 import { logger } from 'hexo-log';
 import { Config, getOrDefault } from './config';
-import { makeWss } from './ws';
+import { isReady, makeWss } from './ws';
 
 const log = logger({
   debug: false,
@@ -21,7 +21,7 @@ export function notifier(this: Hexo) {
       //       Therefore, delay sending the message just a little bit.
       setTimeout(() => {
         wss.clients.forEach(client => {
-          if (client.readyState === WebSocket.OPEN) {
+          if (isReady(client.readyState)) {
             client.send(config.notification.message);
           }
         });
