@@ -20,8 +20,20 @@ export const makeWss = (config: Config) => {
     log.error(`${p} ${err}`);
   });
 
-  wss.on('connection', () => {
-    log.info(`${p} Connection established.`);
+  wss.on('connection', (ws, request, client) => {
+    log.debug(`${p} Connection established.`);
+
+    ws.on('message', data => {
+      log.info(`${p} ${data}`);
+    });
+
+    ws.on('close', () => {
+      log.info(`${p} Connection closed`);
+    });
+
+    ws.on('error', err => {
+      log.error(`${p} ${err}`);
+    });
   });
 
   return wss;

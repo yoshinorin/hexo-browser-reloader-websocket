@@ -12,7 +12,10 @@ hexo.extend.injector.register('body_end', () => {
     // TODO: console.log (browser side)
     return '<script>'
       + `const socket = new WebSocket("ws://localhost:${config.server.port}");`
-      + `socket.addEventListener("message", (event) => {if (event.data === "${config.notification.message}") {location.reload();}});`
+      + 'const path = window.location.pathname.split("?")[0];'
+      + 'const sendReloadingMessage = () => { socket.send("The browser is reloading. Please wait for the reload. This take a little longer if there are a lot of contents (post, page, assets).") };'
+      + 'socket.addEventListener("open", (event) => {socket.send("Connection established from " + path)});'
+      + `socket.addEventListener("message", (event) => {if (event.data === "${config.notification.message}") { sendReloadingMessage(); socket.close(); location.reload();}});`
     + '</script>';
   }
 });
