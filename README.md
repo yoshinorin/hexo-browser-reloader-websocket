@@ -47,7 +47,7 @@ ws_browser_reloader:
 hexo: 7.1.1
 node: 20.11.1
 post: 1773
-routes: 5333
+routes: 5333 (Number of: Post, Page, Assets, Tags, Categories...etc)
 
 // machine
 os: Microsoft Windows 11 Pro
