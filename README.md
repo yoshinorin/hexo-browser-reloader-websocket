@@ -4,15 +4,27 @@ While hexo-server is running, automatically reloads the browser when files are m
 
 Inspired by [hexo-browsersync](https://github.com/hexojs/hexo-browsersync).
 
+## Usage
+
+`hexo-browser-reloader-websocket` is transparent. Once installed, just run `hexo-server` as you usually do.
+
 > [!WARNING]
-> Please **DO NOT USE** in production. </br>
-> <sub>Hexo is a static site generator. It is not intended to run `hexo-server` in production.</sub>
+> Please **DO NOT USE** in production with `hexo-server`. </br>
+> - <sub>Please use this plugin only for development (local env).</sub>
+> - <sub>Hexo is a static site generator. It is not intended to run `hexo-server` in production.</sub>
+> - <sub>This plugin does not encrypt between the WebSocket server and client. </sub>
 
 ## Features
 
 - Reloads the browser when files are modified.
 
 ## Configuration
+
+| key | type | description | default |
+|---|---|---|---|
+| port | number | WebSocket server's port. | 4001 |
+| message | string | [WebSocket message event data](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event). | "reloadBrowser" |
+| wait | number | Reloading the browser by this plugin may be faster than the hexo-server's router updating if there are few post and pages or a lot of post and pages. Therefore, delay sending the message from the WebSocket server just a little bit. | 150 |
 
 **Example:**
 

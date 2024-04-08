@@ -20,8 +20,9 @@ export function notifier(this: Hexo) {
 
     self.source.on('processAfter', x => {
       log.info(`${p} File ${x.type} detected - ${x.path}`);
-      // NOTE: When there are few articles or pages, reloading the browser may be faster than re-rendering.
-      //       Therefore, delay sending the message just a little bit.
+      // NOTE: Reloading the browser by this plugin may be faster than the hexo-server's router updating
+      //       if there are few post and pages or a lot of post and pages.
+      //       Therefore, delay sending the message from the WebSocket server just a little bit.
       setTimeout(() => {
         wss.clients.forEach(client => {
           if (isReady(client.readyState)) {
