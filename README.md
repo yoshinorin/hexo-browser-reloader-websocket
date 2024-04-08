@@ -26,7 +26,7 @@ Inspired by [hexo-browsersync](https://github.com/hexojs/hexo-browsersync).
 |---|---|---|---|
 | port | number | WebSocket server's port. | `4001` |
 | message | string | [WebSocket message event data](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event). | `reloadBrowser` |
-| wait | number | Reloading the browser by this plugin may be faster than the hexo-server's router updating if there are few post and pages or a lot of post and pages. Therefore, delay sending the message from the WebSocket server just a little bit. | `150` |
+| wait | number | Reloading the browser by this plugin may be faster than the hexo-server's router updating **※1** if there are few post and pages or a lot of post and pages. Therefore, delay sending the message from the WebSocket server just a little bit. | `150` |
 
 **Example:**
 
@@ -38,6 +38,22 @@ ws_browser_reloader:
   notification:
     message: "reload"
     wait: 200 # ms
+```
+
+**※1**: Depends on machine power etc. For example below environments need to wait around 500ms before starting to reload the browser.
+
+```
+// hexo
+hexo: 7.1.1
+node: 20.11.1
+post: 1773
+routes: 5333
+
+// machine
+os: Microsoft Windows 11 Pro
+build: 10.0.22631
+cpu: AMD Ryzen 7 PRO 4750G with Radeon Graphics
+physicalMemory: 32,125 MB
 ```
 
 ## Note
