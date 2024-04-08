@@ -1,6 +1,7 @@
 import { Config } from './config';
 import WebSocket from 'ws';
 import { logger } from 'hexo-log';
+import { logPrefix } from './utils';
 
 const log = logger({
   debug: false,
@@ -8,19 +9,19 @@ const log = logger({
 });
 
 export const makeWss = (config: Config) => {
+  const p = logPrefix();
   const wss = new WebSocket.Server({
     port: config.server.port
   });
 
-  // TODO: consider log format.
-  log.info(`[Browser Reloader]: settings - ${JSON.stringify(config, null, 2)}`);
+  log.info(`${p} settings - ${JSON.stringify(config, null, 2)}`);
 
   wss.on('error', err => {
-    log.error(`[Browser Reloader]: ${err}`);
+    log.error(`${p} ${err}`);
   });
 
   wss.on('connection', () => {
-    log.info('[Browser Reloader]: Connection established.');
+    log.info(`${p} Connection established.`);
   });
 
   return wss;
