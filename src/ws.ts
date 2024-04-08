@@ -14,7 +14,7 @@ export const makeWss = (config: Config) => {
     port: config.server.port
   });
 
-  log.info(`${p} settings - ${JSON.stringify(config, null, 2)}`);
+  log.info(`${p} plugin config is: \n ${JSON.stringify(config, null, 2)}`);
 
   wss.on('error', err => {
     log.error(`${p} ${err}`);
