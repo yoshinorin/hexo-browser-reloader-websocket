@@ -12,7 +12,7 @@ hexo.extend.injector.register('body_end', () => {
     // TODO: console.log (browser side)
     return '<script>'
       + `const socket = new WebSocket("ws://localhost:${config.server.port}");`
-      + 'socket.addEventListener("message", (event) => {if (event.data === "reload") {location.reload();}});'
+      + `socket.addEventListener("message", (event) => {if (event.data === "${config.notification.message}") {location.reload();}});`
     + '</script>';
   }
 });
