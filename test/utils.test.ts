@@ -1,5 +1,5 @@
 import Hexo from 'hexo';
-import { expect, test } from 'vitest'
+import { expect, test } from 'vitest';
 import { isServerMode } from '../src/utils';
 
 test('isServerMode should return true', () => {

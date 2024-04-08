@@ -1,5 +1,5 @@
 import Hexo from 'hexo';
-import { expect, test } from 'vitest'
+import { expect, test } from 'vitest';
 import { Config, getOrDefault } from '../src/config';
 
 test('getOrDefault should returns default config if hexo ctx has not plugins config.', () => {
@@ -29,7 +29,7 @@ test('getOrDefault should returns hexo ctx plugins config.', () => {
     notification: {
       message: 'testMessage',
       wait: 999
-  }};
+    }};
   const expected: Config = {
     server: {
       port: 9999
@@ -37,7 +37,7 @@ test('getOrDefault should returns hexo ctx plugins config.', () => {
     notification: {
       message: 'testMessage',
       wait: 999
-  }};
+    }};
 
   const c = getOrDefault(h);
   expect(c).toEqual(expected);
