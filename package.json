@@ -9,6 +9,7 @@
     "clean": "tsc -b --clean",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "pretest": "npm run clean && npm run build",
     "test": "vitest run --coverage"
   },
   "directories": {
@@ -37,11 +38,13 @@
   "devDependencies": {
     "@types/node": "20.12.4",
     "@types/ws": "8.5.10",
+    "@vitest/coverage-v8": "1.4.0",
     "eslint": "8.57.0",
     "eslint-config-hexo": "^5.0.0",
     "hexo": "7.1.1",
     "hexo-log": "4.1.0",
-    "typescript": "5.4.4"
+    "typescript": "5.4.4",
+    "vitest": "1.4.0"
   },
   "engines": {
     "node": ">=18"
