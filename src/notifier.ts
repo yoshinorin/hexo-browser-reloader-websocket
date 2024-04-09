@@ -2,7 +2,7 @@ import type Hexo from 'hexo';
 
 import { logger } from 'hexo-log';
 import { Config, calcWait, getOrDefault } from './config';
-import { isReady, makeWss } from './ws';
+import { isReady, createWebSocketServer } from './ws';
 import { logPrefix } from './utils';
 
 const log = logger({
@@ -16,7 +16,7 @@ export function notifier(this: Hexo) {
 
   self.on('server', () => {
     const p = logPrefix();
-    const wss = makeWss(config);
+    const wss = createWebSocketServer(config);
     const numOfRoutes = self.route.list().length;
     const wt = calcWait(config, numOfRoutes);
 

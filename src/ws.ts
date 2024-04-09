@@ -8,7 +8,7 @@ const log = logger({
   silent: false
 });
 
-export const makeWss = (config: Config) => {
+export const createWebSocketServer = (config: Config) => {
   const p = logPrefix();
   const wss = new WebSocket.Server({
     port: config.server.port
