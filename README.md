@@ -2,7 +2,7 @@
 
 # hexo-browser-reloader-websocket
 
-While hexo-server is running, automatically reloads the browser when files are modified.
+Automatically reloads the browser when files are modified while the hexo-server is running.
 
 Inspired by [hexo-browsersync](https://github.com/hexojs/hexo-browsersync).
 
