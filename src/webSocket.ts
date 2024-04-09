@@ -1,5 +1,5 @@
 import { Config } from './config';
-import WebSocket from 'ws';
+import { WebSocket } from 'ws';
 import { logger } from 'hexo-log';
 import { logPrefix } from './utils';
 
