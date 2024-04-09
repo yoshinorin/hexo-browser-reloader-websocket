@@ -6,7 +6,13 @@ export interface Config {
     },
     notification: {
       message: string,
-      wait: number
+      wait: {
+        min: number
+        autoCalc: {
+          enable: boolean,
+          coefficient: number
+        }
+      }
     }
   }
 
@@ -17,8 +23,29 @@ export const getOrDefault = (hexo: Hexo): Config => {
     },
     notification: {
       message: 'reloadBrowser',
-      // ms
-      wait: 150
+      wait: {
+        min: 150, // ms
+        autoCalc: {
+          enable: true,
+          coefficient: 1.0
+        }
+      }
     }
   }, hexo.config.ws_browser_reloader);
+};
+
+export const calcWait = (config: Config, numOfRoutes: number): number => {
+  const { wait } = config.notification;
+  const min = wait.min < 0 ? 0 : wait.min;
+
+  if (!wait.autoCalc || !wait.autoCalc.enable) {
+    return min;
+  }
+
+  const coeff = wait.autoCalc.coefficient <= 0 ? 1 : wait.autoCalc.coefficient;
+  const x = Math.floor((numOfRoutes / 10) * coeff);
+  if (min > x) {
+    return min;
+  }
+  return x;
 };

@@ -1,7 +1,7 @@
 import type Hexo from 'hexo';
 
 import { logger } from 'hexo-log';
-import { Config, getOrDefault } from './config';
+import { Config, calcWait, getOrDefault } from './config';
 import { isReady, makeWss } from './ws';
 import { logPrefix } from './utils';
 
@@ -17,7 +17,8 @@ export function notifier(this: Hexo) {
   self.on('server', () => {
     const p = logPrefix();
     const wss = makeWss(config);
-    const wt = config.notification.wait;
+    const numOfRoutes = self.route.list().length;
+    const wt = calcWait(config, numOfRoutes);
 
     self.source.on('processAfter', x => {
       log.info(`${p} File ${x.type} detected. File name is: ${x.path}`);

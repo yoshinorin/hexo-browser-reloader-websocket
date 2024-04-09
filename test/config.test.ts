@@ -1,6 +1,6 @@
 import Hexo from 'hexo';
 import { expect, test } from 'vitest';
-import { Config, getOrDefault } from '../src/config';
+import { Config, calcWait, getOrDefault } from '../src/config';
 
 test('getOrDefault should returns default config if hexo ctx has not plugins config.', () => {
   const h = new Hexo();
@@ -11,8 +11,13 @@ test('getOrDefault should returns default config if hexo ctx has not plugins con
     },
     notification: {
       message: 'reloadBrowser',
-      // ms
-      wait: 150
+      wait: {
+        min: 150, // ms
+        autoCalc: {
+          enable: true,
+          coefficient: 1.0
+        }
+      }
     }};
 
   const c = getOrDefault(h);
@@ -28,7 +33,13 @@ test('getOrDefault should returns hexo ctx plugins config.', () => {
     },
     notification: {
       message: 'testMessage',
-      wait: 999
+      wait: {
+        min: 999, // ms
+        autoCalc: {
+          enable: true,
+          coefficient: 1.6
+        }
+      }
     }};
   const expected: Config = {
     server: {
@@ -36,9 +47,114 @@ test('getOrDefault should returns hexo ctx plugins config.', () => {
     },
     notification: {
       message: 'testMessage',
-      wait: 999
+      wait: {
+        min: 999, // ms
+        autoCalc: {
+          enable: true,
+          coefficient: 1.6
+        }
+      }
     }};
 
   const c = getOrDefault(h);
   expect(c).toEqual(expected);
+});
+
+test('calcWait should returns configs min value if autoCalc object is nothing', () => {
+  const c = {
+    notification: {
+      wait: {
+        min: 1
+      }
+    }};
+
+  // @ts-ignore
+  const result = calcWait(c, 1000);
+  expect(result).toEqual(1);
+});
+
+test('calcWait should returns configs min value if autoCalc is disabled', () => {
+  const c = {
+    notification: {
+      wait: {
+        min: 2,
+        autoCalc: {
+          enable: false,
+          coefficient: 1.6
+        }
+      }
+    }};
+
+  // @ts-ignore
+  const result = calcWait(c, 1000);
+  expect(result).toEqual(2);
+});
+
+test('calcWait should returns calculated wait time by numOfRoutes and config', () => {
+  const c = {
+    notification: {
+      wait: {
+        min: 0,
+        autoCalc: {
+          enable: true,
+          coefficient: 1.1
+        }
+      }
+    }};
+
+  // @ts-ignore
+  const result = calcWait(c, 1000);
+  expect(result).toEqual(110);
+});
+
+test('calcWait should returns calculated wait time by numOfRoutes and config (coefficient is zero)', () => {
+  const c = {
+    notification: {
+      wait: {
+        min: 0,
+        autoCalc: {
+          enable: true,
+          coefficient: 0
+        }
+      }
+    }};
+
+  // @ts-ignore
+  const result = calcWait(c, 1000);
+  expect(result).toEqual(100);
+});
+
+test('calcWait should returns calculated wait time by numOfRoutes and config (coefficient is negative value)', () => {
+  const c = {
+    notification: {
+      wait: {
+        min: 0,
+        autoCalc: {
+          enable: true,
+          coefficient: -1
+        }
+      }
+    }};
+
+  // @ts-ignore
+  const result = calcWait(c, 1000);
+  expect(result).toEqual(100);
+});
+
+
+test('calcWait should returns min wait time if min value is rather than calculated value', () => {
+  const c = {
+    notification: {
+      wait: {
+        min: 101,
+        autoCalc: {
+          enable: true,
+          coefficient: 0.1
+        }
+      }
+    }};
+
+  // @ts-ignore
+  const result = calcWait(c, 1000);
+  expect(result).toEqual(101);
 });
