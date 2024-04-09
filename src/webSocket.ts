@@ -14,7 +14,7 @@ export const createWebSocketServer = (config: Config) => {
     port: config.server.port
   });
 
-  log.info(`${p} plugin config is: \n ${JSON.stringify(config, null, 2)}`);
+  log.debug(`${p} plugin config is: \n ${JSON.stringify(config, null, 2)}`);
 
   wss.on('error', err => {
     log.error(`${p} ${err}`);
@@ -24,11 +24,22 @@ export const createWebSocketServer = (config: Config) => {
     log.debug(`${p} Connection established.`);
 
     ws.on('message', data => {
-      log.info(`${p} ${data}`);
+      const d = JSON.parse(data);
+
+      switch (d.type) {
+        case 'connected':
+          log.debug(`${p} ${d.message}`);
+          break;
+        case 'reload':
+          log.info(`${p} ${d.message}`);
+          break;
+        default:
+          // Nothing todo
+      }
     });
 
     ws.on('close', () => {
-      log.info(`${p} Connection closed`);
+      log.debug(`${p} Connection closed`);
     });
 
     ws.on('error', err => {

@@ -9,12 +9,18 @@ hexo.extend.injector.register('body_end', () => {
     const config = getOrDefault(hexo);
     // TODO: error handling (Websocket connection failed. etc...) & retry.
     // TODO: host should be configurable?
-    return '<script>'
-      + `const socket = new WebSocket("ws://localhost:${config.server.port}");`
-      + 'const path = window.location.pathname.split("?")[0];'
-      + 'const sendReloadingMessage = () => { socket.send("The browser is reloading. Please wait for the reload. This take a little longer if there are a lot of routes (post, page, assets, tags, categories etc).") };'
-      + 'socket.addEventListener("open", (event) => {socket.send("Connection established from " + path)});'
-      + `socket.addEventListener("message", (event) => {if (event.data === "${config.notification.message}") { sendReloadingMessage(); socket.close(); location.reload();}});`
-    + '</script>';
+    const s = `
+      const socket = new WebSocket("ws://localhost:${config.server.port}");
+      const path = window.location.pathname.split("?")[0];
+
+      const reloadingMessage = '{"type":"reload", "message": "The browser is reloading. Please wait for the reload. This take a little longer if there are a lot of routes (post, page, assets, tags, categories etc)."}';
+      const connectedMessage = JSON.stringify({"type":"connected", "message": "Connection established from " + path});
+
+      const sendReloadingMessage = () => { socket.send(reloadingMessage) };
+      socket.addEventListener("open", (event) => {socket.send(connectedMessage)});
+      socket.addEventListener("message", (event) => {if (event.data === "${config.notification.message}") { sendReloadingMessage(); socket.close(); location.reload();}});
+    `;
+
+    return `<script>${s}</script>`;
   }
 });
