@@ -7,9 +7,8 @@ hexo.extend.injector.register('body_end', () => {
   // NOTE: inject script when run `hexo server`.
   if (isServerMode(hexo)) {
     const config = getOrDefault(hexo);
-    // TODO: error handling (Websocket connection failed. etc...)
+    // TODO: error handling (Websocket connection failed. etc...) & retry.
     // TODO: host should be configurable?
-    // TODO: console.log (browser side)
     return '<script>'
       + `const socket = new WebSocket("ws://localhost:${config.server.port}");`
       + 'const path = window.location.pathname.split("?")[0];'
