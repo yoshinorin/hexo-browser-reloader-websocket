@@ -1,7 +1,7 @@
 {
   "name": "hexo-browser-reloader-websocket",
   "version": "1.0.0-rc2",
-  "description": "Automatically reloads the browser when files are modified while the hexo-server is running.",
+  "description": "A hexo plugin. Automatically reloads the browser when files are modified while the hexo-server is running.",
   "main": "dist/index.js",
   "scripts": {
     "prepublishOnly": "npm run clean && npm run build",
@@ -15,6 +15,10 @@
   "directories": {
     "src": "./src"
   },
+  "homepage": "https://github.com/yoshinorin/hexo-browser-reloader-websocket",
+  "bugs": {
+    "url": "https://github.com/yoshinorin/hexo-browser-reloader-websocket/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yoshinorin/hexo-browser-reloader-websocket.git"
@@ -26,10 +30,8 @@
   "author": "yoshinorin",
   "license": "MIT",
   "keywords": [
-    "website",
-    "blog",
-    "cms",
-    "framework",
+    "websocket",
+    "hexo-plugin",
     "hexo"
   ],
   "dependencies": {
