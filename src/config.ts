@@ -13,6 +13,10 @@ export interface Config {
           coefficient: number
         }
       }
+    },
+    logger: {
+      debug: false,
+      silent: false
     }
   }
 

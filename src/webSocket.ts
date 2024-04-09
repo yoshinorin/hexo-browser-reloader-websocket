@@ -1,14 +1,9 @@
 import { Config } from './config';
 import { WebSocket } from 'ws';
-import { logger } from 'hexo-log';
-import { logPrefix } from './utils';
-
-const log = logger({
-  debug: false,
-  silent: false
-});
+import { createLogger, logPrefix } from './utils';
 
 export const createWebSocketServer = (config: Config) => {
+  const log = createLogger(config);
   const p = logPrefix();
   const wss = new WebSocket.Server({
     port: config.server.port

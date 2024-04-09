@@ -1,18 +1,13 @@
 import type Hexo from 'hexo';
 
-import { logger } from 'hexo-log';
 import { Config, calcWait, getOrDefault } from './config';
 import { isReady, createWebSocketServer } from './webSocket';
-import { logPrefix } from './utils';
-
-const log = logger({
-  debug: false,
-  silent: false
-});
+import { createLogger, logPrefix } from './utils';
 
 export function notifier(this: Hexo) {
   const self = this;
   const config: Config = getOrDefault(self);
+  const log = createLogger(config);
 
   self.on('server', () => {
     const p = logPrefix();
