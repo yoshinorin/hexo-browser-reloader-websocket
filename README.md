@@ -49,8 +49,8 @@ ws_browser_reloader:
 | message | string | [WebSocket message event data](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event). | `reloadBrowser` |
 | wait.min | number | Minimum waiting time for reload browser after detecting file changes. Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-wait-time). | `150` |
 | wait.autoCalc.enable | boolean | Calculate the waiting time for the reload browser after detecting file changes based on the number of routes (Post, Page, Assets, Tags, Categories...etc). Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-waitautocalc-formula). | `true` |
-| logger.debug | boolean | Logs verbose messages to the terminal. Pleasse see [example](https://github.com/yoshinorin/hexo-browser-reloader-websocket#log -example). | `false` |
-| logger.silent | boolean | Silences output to the terminal. Pleasse see [example](https://github.com/yoshinorin/hexo-browser-reloader-websocket#log -example). | `false` |
+| logger.debug | boolean | Logs verbose messages to the terminal. Pleasse see [example](https://github.com/yoshinorin/hexo-browser-reloader-websocket#log-example). | `false` |
+| logger.silent | boolean | Silences output to the terminal. Pleasse see [example](https://github.com/yoshinorin/hexo-browser-reloader-websocket#log-example). | `false` |
 
 ### About wait time
 
