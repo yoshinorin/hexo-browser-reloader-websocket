@@ -21,8 +21,6 @@ export const createWebSocketServer = (config: Config) => {
   });
 
   wss.on('connection', (ws, request, client) => {
-    log.debug(`${p} Connection established.`);
-
     ws.on('message', data => {
       const d = JSON.parse(data);
 

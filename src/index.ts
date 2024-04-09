@@ -13,7 +13,7 @@ hexo.extend.injector.register('body_end', () => {
       const socket = new WebSocket("ws://localhost:${config.server.port}");
       const path = window.location.pathname.split("?")[0];
 
-      const reloadingMessage = '{"type":"reload", "message": "The browser is reloading. Please wait for the reload. This take a little longer if there are a lot of routes (post, page, assets, tags, categories etc)."}';
+      const reloadingMessage = '{"type":"reload", "message": "The browser is reloading. Please wait for the reload. This may take a little longer..."}';
       const connectedMessage = JSON.stringify({"type":"connected", "message": "Connection established from " + path});
 
       const sendReloadingMessage = () => { socket.send(reloadingMessage) };

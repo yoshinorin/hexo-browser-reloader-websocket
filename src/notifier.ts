@@ -17,6 +17,8 @@ export function notifier(this: Hexo) {
   self.on('server', () => {
     const p = logPrefix();
     const wss = createWebSocketServer(config);
+    log.info(`${p} WebSocketServer is ready.`);
+
     const numOfRoutes = self.route.list().length;
     const wt = calcWait(config, numOfRoutes);
 
