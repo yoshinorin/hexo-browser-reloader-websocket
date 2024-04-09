@@ -2,7 +2,7 @@ import type Hexo from 'hexo';
 
 import { logger } from 'hexo-log';
 import { Config, calcWait, getOrDefault } from './config';
-import { isReady, createWebSocketServer } from './ws';
+import { isReady, createWebSocketServer } from './webSocket';
 import { logPrefix } from './utils';
 
 const log = logger({
