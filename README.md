@@ -38,9 +38,6 @@ ws_browser_reloader:
       autoCalc:
         enable: true
         coefficient: 1.0
-  logger:
-    debug: false
-    silent: false
 ```
 
 | key | type | description | default |
@@ -50,8 +47,6 @@ ws_browser_reloader:
 | wait.min | number | Minimum waiting time for reload browser after detecting file changes. Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-wait-time). | `150` |
 | wait.autoCalc.enable | boolean | Calculate the waiting time for the reload browser after detecting file changes based on the number of routes (Post, Page, Assets, Tags, Categories...etc). Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-waitautocalc-formula). | `true` |
 | wait.autoCalc.coefficient | number | Coefficient for calculate wait time if autoCalc is enabled. | `1.0` |
-| logger.debug | boolean | Logs verbose messages to the terminal. Pleasse see [example](https://github.com/yoshinorin/hexo-browser-reloader-websocket#log-example). | `false` |
-| logger.silent | boolean | Silences output to the terminal. Pleasse see [example](https://github.com/yoshinorin/hexo-browser-reloader-websocket#log-example). | `false` |
 
 ### About wait time
 
@@ -86,43 +81,9 @@ If the `wait.autoCalc.enabled` option is enabled, the plugin calculates the wait
 (1200 / 10) * 0.9 = 108ms
 ```
 
-### Log Example
+## Logger
 
-If you want to see full log, set `logger.debug = true`. Below is a full log example.
-
-```sh
-$ hexo s
-INFO  Validating config
-INFO  Start processing
-INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
-15:46:23.127 DEBUG [hexo-browser-reloader-websocket]: plugin config is:
- {
-  "server": {
-    "port": 4001
-  },
-  "notification": {
-    "message": "reloadBrowser",
-    "wait": {
-      "min": 200,
-      "autoCalc": {
-        "enable": true,
-        "coefficient": 1
-      }
-    }
-  },
-  "logger": {
-    "debug": true,
-    "silent": false
-  }
-}
-15:46:23.129 INFO  [hexo-browser-reloader-websocket]: WebSocketServer is ready.
-15:46:24.470 DEBUG [hexo-browser-reloader-websocket]: Connection established from /2024/04/05/post3/
-15:46:28.168 INFO  [hexo-browser-reloader-websocket]: File update detected. File name is: _posts/post3.md
-15:46:28.369 INFO  [hexo-browser-reloader-websocket]: The browser reloading will start in 200 ms.
-15:46:28.370 INFO  [hexo-browser-reloader-websocket]: The browser is reloading. Please wait for the reload. This may take a little longer...
-15:46:28.372 DEBUG [hexo-browser-reloader-websocket]: Connection closed
-15:46:28.535 DEBUG [hexo-browser-reloader-websocket]: Connection established from /2024/04/05/post3/
-```
+Please see [logger](./docs/logger.md) docs.
 
 ## What is difference between hexo-browser-sync?
 
