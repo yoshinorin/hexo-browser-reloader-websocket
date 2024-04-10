@@ -8,7 +8,7 @@ Inspired by [hexo-browsersync](https://github.com/hexojs/hexo-browsersync).
 
 ## Usage
 
-`hexo-browser-reloader-websocket` is transparent. Once installed, just run `hexo-server` as you usually do.
+`hexo-browser-reloader-websocket` is transparent. Once installed, just run `hexo-server`.
 
 > [!WARNING]
 > Please **DO NOT USE** in production (It means please do not run `hexo-server` in production). </br>
@@ -55,7 +55,7 @@ ws_browser_reloader:
 
 ### About wait time
 
-Reloading the browser by this plugin may be faster than the hexo-server's router updating if there are few posts and pages or a lot of posts and pages. This means that reloading the browser may be faster than changing by hexo. To resolve this, wait a little bit after file change detection before starting the browser reload. The option for this is wait time.
+Reloading the browser by this plugin may be faster than the hexo-server's router updating if there are few posts and pages or a lot of posts and pages. To resolve this, wait a little bit after file change detection before starting the browser reload. The option for this is wait time.
 
 Its depends on machine power etc. For example below environments need to wait around 300 ~ 500ms before starting to reload the browser.
 
@@ -74,13 +74,13 @@ cpu: AMD Ryzen 7 PRO 4750G with Radeon Graphics
 physicalMemory: 32,125 MB
 ```
 
-### About `wait.autoCalc` formula
+### About `wait.autoCalc` calculation formula
 
-If the `wait.autoCalc.enabled` option is enabled, the plugin calculates the waiting time for the reload browser after detecting file changes based on the number of routes (Post, Page, Assets, Tags, Categories...etc). Below is a formula.
+If the `wait.autoCalc.enabled` option is enabled, the plugin calculates the waiting time for the reload browser after detecting file changes based on the number of routes (Post, Page, Assets, Tags, Categories...etc). Below is a calculation formula.
 
 ```text
-// formula
-(<routes> / 10) * <autoCalc.coefficient> = wait(ms)
+// calculation formula
+(<number of routes> / 10) * <autoCalc.coefficient> = wait(ms)
 
 // example
 (1200 / 10) * 0.9 = 108ms
