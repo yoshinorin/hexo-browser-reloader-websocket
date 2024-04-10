@@ -50,24 +50,7 @@ ws_browser_reloader:
 
 ### About wait time
 
-Reloading the browser by this plugin may be faster than the hexo-server's router updating if there are few posts and pages or a lot of posts and pages. To resolve this, wait a little bit after file change detection before starting the browser reload. The option for this is wait time.
-
-Its depends on machine power etc. For example below environments need to wait around 300 ~ 500ms before starting to reload the browser.
-
-```
-// hexo
-hexo: 7.1.1
-node: 20.11.1
-post: 1773
-# Number of: Post, Page, Assets, Tags, Categories...etc
-routes: 5333
-
-// machine
-os: Microsoft Windows 11 Pro
-build: 10.0.22631
-cpu: AMD Ryzen 7 PRO 4750G with Radeon Graphics
-physicalMemory: 32,125 MB
-```
+Reloading the browser by this plugin may be faster than the hexo-server's router updating if there are few posts and pages or a lot of posts and pages. To resolve this, wait a little bit after file change detection before starting the browser reload. The option for this is wait time. Its depends on machine power etc. As an example, [this environment](./docs/waittime.md) need to wait around 300 ~ 500 ms before starting to reload the browser.
 
 ### About `wait.autoCalc` calculation formula
 
