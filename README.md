@@ -2,9 +2,7 @@
 
 # hexo-browser-reloader-websocket
 
-Automatically reloads the browser when files are modified while the hexo-server is running.
-
-Inspired by [hexo-browsersync](https://github.com/hexojs/hexo-browsersync).
+Automatically reloads the browser when files are modified while the [hexo-server](https://github.com/hexojs/hexo-server) is running. Inspired by [hexo-browsersync](https://github.com/hexojs/hexo-browsersync).
 
 ## Usage
 
@@ -42,19 +40,21 @@ ws_browser_reloader:
 
 | key | type | description | default |
 |---|---|---|---|
-| port | number | WebSocket server's port. | `4001` |
-| message | string | [WebSocket message event data](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event). | `reloadBrowser` |
-| wait.min | number | Minimum waiting time for reload browser after detecting file changes. Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-wait-time). | `150` |
-| wait.autoCalc.enable | boolean | Calculate the waiting time for the reload browser after detecting file changes based on the number of routes (Post, Page, Assets, Tags, Categories...etc). Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-waitautocalc-formula). | `true` |
-| wait.autoCalc.coefficient | number | Coefficient for calculate wait time if autoCalc is enabled. | `1.0` |
+| `port` | number | WebSocket server's port. | `4001` |
+| `message` | string | [WebSocket message event data](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event). | `reloadBrowser` |
+| `wait.min` | number | Minimum waiting time for reload browser after detecting file changes. Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-wait-time). | `150` |
+| `wait.autoCalc.enable` | boolean | Calculate the waiting time for the reload browser after detecting file changes based on the number of routes. Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-waitautocalc-formula). | `true` |
+| `wait.autoCalc.coefficient` | number | Coefficient for calculate wait time if autoCalc is enabled. | `1.0` |
 
 ### About wait time
 
-Reloading the browser by this plugin may be faster than the hexo-server's router updating if there are few posts and pages or a lot of posts and pages. To resolve this, wait a little bit after file change detection before starting the browser reload. The option for this is wait time. Its depends on machine power etc. As an example, [this environment](./docs/waittime.md) need to wait around 300 ~ 500 ms before starting to reload the browser.
+Reloading the browser by this plugin may be faster than the hexo-server's [router](https://hexo.io/api/router) updating if there are few routes or a lot of routes. The router updating depends on the number of post, pages, assets, tags, categories...etc. Also it depends on machine power etc.
+
+The `wait` option for resolve this, wait a little bit after file change detection before starting the browser reload. As reference, [example environment](./docs/waittime.md) need to wait around `300 ~ 500 ms` .
 
 ### About `wait.autoCalc` calculation formula
 
-If the `wait.autoCalc.enabled` option is enabled, the plugin calculates the waiting time for the reload browser after detecting file changes based on the number of routes (Post, Page, Assets, Tags, Categories...etc). Below is a calculation formula.
+If the `wait.autoCalc.enabled` option is `true`, the plugin calculates the waiting time based on the number of routes. Below is a calculation formula.
 
 ```text
 // calculation formula
@@ -66,7 +66,7 @@ If the `wait.autoCalc.enabled` option is enabled, the plugin calculates the wait
 
 ## Logger
 
-Please see [logger](./docs/logger.md) docs.
+Please see [logger](./docs/logger.md) docs if you need.
 
 ## What is difference between hexo-browser-sync?
 
