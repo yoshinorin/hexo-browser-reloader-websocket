@@ -124,11 +124,6 @@ INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
 15:46:28.535 DEBUG [hexo-browser-reloader-websocket]: Connection established from /2024/04/05/post3/
 ```
 
-## Note
-
-Please reload a browser manually if you are restarted `hexo-server`.
-
-
 ## What is difference between hexo-browser-sync?
 
 TODO
