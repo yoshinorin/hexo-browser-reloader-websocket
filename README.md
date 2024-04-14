@@ -50,7 +50,7 @@ browser_reloader_websocket:
 
 ### About wait time
 
-Reloading the browser by this plugin may be faster than the hexo-server's [router](https://hexo.io/api/router) updating if there are few routes or a lot of routes. The router updating depends on the number of post, pages, assets, tags, categories...etc. Also it depends on theme, plugins and machine power etc.
+Reloading the browser by this plugin may be faster than the hexo-server's [router](https://hexo.io/api/router) updating if there are few routes or a lot of routes. The router updating speed depends on the number of post, pages, assets, tags, categories...etc. Also it depends on theme, plugins and machine power etc.
 
 The `wait` option for resolve this, wait a little bit after file change detection before starting the browser reload.
 
