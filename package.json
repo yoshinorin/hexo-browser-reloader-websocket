@@ -1,6 +1,6 @@
 {
   "name": "hexo-browser-reloader-websocket",
-  "version": "1.0.0-rc3",
+  "version": "1.0.0",
   "description": "A hexo plugin. Automatically reloads the browser when files are modified while the hexo-server is running.",
   "main": "dist/index.js",
   "scripts": {
