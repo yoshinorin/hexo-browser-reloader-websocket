@@ -9,6 +9,7 @@ if (config.enable && isServerMode(hexo)) {
   hexo.extend.filter.register('server_middleware', notifier, 999);
   hexo.extend.injector.register('body_end', () => {
 
+    /* eslint-disable */
     return `<script>
     // This script injected by 'hexo-browser-reloader-websocket' plugin.
     // Inject only when running 'hexo-server' with 'hexo server' command.
@@ -67,5 +68,6 @@ if (config.enable && isServerMode(hexo)) {
     observe("ws://localhost:${config.server.port}", "${config.notification.message}");
     </script>`;
   });
+  /* eslint-enable */
 }
 
