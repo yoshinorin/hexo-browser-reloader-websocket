@@ -43,8 +43,8 @@ if (config.enable && isServerMode(hexo)) {
         socket.addEventListener('message', event => {
           if (event.data === reloadMessage) {
             console.log(`${logPrefix} Received reload message from WebSocket Server.`);
-            socket.send(reloadingMessage);
             connectionCloser = 'client';
+            socket.send(reloadingMessage);
             socket.close();
             location.reload();
           }
