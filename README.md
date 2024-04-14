@@ -9,7 +9,7 @@ Automatically reloads the browser when files are modified while the [hexo-server
 `hexo-browser-reloader-websocket` is transparent. Once installed, just run `hexo-server`.
 
 > [!WARNING]
-> Please **DO NOT USE** in production (It means please do not run `hexo-server` in production). </br>
+> Please **DO NOT USE** in production (It means do not run `hexo-server` in production). </br>
 > - <sub>Please use this plugin only for development (local environment).</sub>
 > - <sub>Hexo is a static site generator. It is not intended to run `hexo-server` in production.</sub>
 > - <sub>This plugin does not encrypt between the WebSocket server and client. </sub>
@@ -48,9 +48,9 @@ browser_reloader_websocket:
 
 ### About wait time
 
-Reloading the browser by this plugin may be faster than the hexo-server's [router](https://hexo.io/api/router) updating if there are few routes or a lot of routes. The router updating depends on the number of post, pages, assets, tags, categories...etc. Also it depends on machine power etc.
+Reloading the browser by this plugin may be faster than the hexo-server's [router](https://hexo.io/api/router) updating if there are few routes or a lot of routes. The router updating depends on the number of post, pages, assets, tags, categories...etc. Also it depends on theme, plugins and machine power etc.
 
-The `wait` option for resolve this, wait a little bit after file change detection before starting the browser reload. As reference, [example environment](./docs/waittime.md) need to wait around `300 ~ 500 ms` .
+The `wait` option for resolve this, wait a little bit after file change detection before starting the browser reload.
 
 ### About `wait.autoCalc` calculation formula
 
@@ -67,7 +67,3 @@ If the `wait.autoCalc.enabled` option is `true`, the plugin calculates the waiti
 ## Logger
 
 Please see [logger](./docs/logger.md) docs if you need.
-
-## What is difference between hexo-browser-sync?
-
-TODO
