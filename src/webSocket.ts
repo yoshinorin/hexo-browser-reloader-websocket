@@ -27,7 +27,7 @@ export const createWebSocketServer = (config: Config) => {
           log.info(`${p} ${d.message}`);
           break;
         default:
-          // Nothing todo
+          log.info(`${d.message}`);
       }
     });
 
