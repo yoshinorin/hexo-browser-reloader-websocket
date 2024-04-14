@@ -8,7 +8,7 @@ If you want to see full log, set `logger.debug = true` in your `_config.yml`
 
 ```yaml
 # _config.yml
-ws_browser_reloader:
+browser_reloader_websocket:
   server:
     port: 4001
   notification:

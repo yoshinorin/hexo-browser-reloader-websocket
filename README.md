@@ -26,7 +26,7 @@ npm i hexo-browser-reloader-websocket
 
 ```yaml
 # _config.yml
-ws_browser_reloader:
+browser_reloader_websocket:
   server:
     port: 4001
   notification:

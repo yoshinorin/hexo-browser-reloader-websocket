@@ -35,7 +35,7 @@ export const getOrDefault = (hexo: Hexo): Config => {
         }
       }
     }
-  }, hexo.config.ws_browser_reloader);
+  }, hexo.config.browser_reloader_websocket);
 };
 
 export const calcWait = (config: Config, numOfRoutes: number): number => {

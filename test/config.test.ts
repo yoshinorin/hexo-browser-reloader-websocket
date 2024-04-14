@@ -27,7 +27,7 @@ test('getOrDefault should returns default config if hexo ctx has not plugins con
 
 test('getOrDefault should returns hexo ctx plugins config.', () => {
   const h = new Hexo();
-  h.config.ws_browser_reloader = {
+  h.config.browser_reloader_websocket = {
     server: {
       port: 9999
     },
