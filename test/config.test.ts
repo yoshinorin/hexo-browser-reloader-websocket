@@ -19,7 +19,12 @@ test('getOrDefault should returns default config if hexo ctx has not plugins con
           coefficient: 1.0
         }
       }
-    }};
+    },
+    logger: {
+      debug: false,
+      silent: false
+    }
+  };
 
   const c = getOrDefault(h);
   expect(c).toEqual(expected);
@@ -42,6 +47,10 @@ test('getOrDefault should returns hexo ctx plugins config.', () => {
           coefficient: 1.6
         }
       }
+    },
+    logger: {
+      debug: true,
+      silent: true
     }};
   const expected = {
     enable: false,
@@ -57,6 +66,10 @@ test('getOrDefault should returns hexo ctx plugins config.', () => {
           coefficient: 1.6
         }
       }
+    },
+    logger: {
+      debug: true,
+      silent: true
     }};
 
   const c = getOrDefault(h);

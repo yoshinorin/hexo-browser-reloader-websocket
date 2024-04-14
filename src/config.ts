@@ -36,6 +36,10 @@ export const getOrDefault = (hexo: Hexo): Config => {
           coefficient: 1.0
         }
       }
+    },
+    logger: {
+      debug: false,
+      silent: false
     }
   }, hexo.config.browser_reloader_websocket);
 };
