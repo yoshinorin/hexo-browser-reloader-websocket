@@ -6,6 +6,7 @@ test('getOrDefault should returns default config if hexo ctx has not plugins con
   const h = new Hexo();
 
   const expected: Config = {
+    enable: true,
     server: {
       port: 4001
     },
@@ -28,6 +29,7 @@ test('getOrDefault should returns default config if hexo ctx has not plugins con
 test('getOrDefault should returns hexo ctx plugins config.', () => {
   const h = new Hexo();
   h.config.browser_reloader_websocket = {
+    enable: false,
     server: {
       port: 9999
     },
@@ -41,7 +43,8 @@ test('getOrDefault should returns hexo ctx plugins config.', () => {
         }
       }
     }};
-  const expected: Config = {
+  const expected = {
+    enable: false,
     server: {
       port: 9999
     },

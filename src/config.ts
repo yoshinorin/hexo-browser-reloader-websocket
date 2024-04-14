@@ -1,6 +1,7 @@
 import type Hexo from 'hexo';
 
 export interface Config {
+    enable: true,
     server: {
       port: number,
     },

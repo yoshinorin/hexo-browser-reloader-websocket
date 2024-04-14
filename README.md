@@ -27,6 +27,7 @@ npm i hexo-browser-reloader-websocket
 ```yaml
 # _config.yml
 browser_reloader_websocket:
+  enable: true
   server:
     port: 4001
   notification:
@@ -40,6 +41,7 @@ browser_reloader_websocket:
 
 | key | type | description | default |
 |---|---|---|---|
+| `enable` | boolean | Manage enable or disable this plugin. | `true` |
 | `port` | number | WebSocket server's port. | `4001` |
 | `message` | string | [WebSocket message event data](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event). | `reloadBrowser` |
 | `wait.min` | number | Minimum waiting time for reload browser after detecting file changes. Pleasse see [About wait time](https://github.com/yoshinorin/hexo-browser-reloader-websocket#about-wait-time). | `150` |

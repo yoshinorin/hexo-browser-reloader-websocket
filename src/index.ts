@@ -2,11 +2,12 @@ import { getOrDefault } from './config';
 import { notifier } from './notifier';
 import { isServerMode } from './utils';
 
+const config = getOrDefault(hexo);
+
 // NOTE: register server middleware and inject script when run `hexo server`.
-if (isServerMode(hexo)) {
+if (config.enable && isServerMode(hexo)) {
   hexo.extend.filter.register('server_middleware', notifier, 999);
   hexo.extend.injector.register('body_end', () => {
-    const config = getOrDefault(hexo);
 
     return `<script>
     // This script injected by 'hexo-browser-reloader-websocket' plugin.
