@@ -1,7 +1,7 @@
 import type Hexo from 'hexo';
 
 export interface Config {
-    enable: true,
+    enable: boolean,
     server: {
       port: number,
     },
@@ -16,8 +16,8 @@ export interface Config {
       }
     },
     logger: {
-      debug: false,
-      silent: false
+      debug: boolean,
+      silent: boolean
     }
   }
 
