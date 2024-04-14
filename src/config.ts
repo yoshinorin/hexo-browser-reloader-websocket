@@ -23,6 +23,7 @@ export interface Config {
 
 export const getOrDefault = (hexo: Hexo): Config => {
   return Object.assign({
+    enable: true,
     server: {
       port: 4001
     },
