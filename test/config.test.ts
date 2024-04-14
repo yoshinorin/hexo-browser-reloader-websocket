@@ -1,11 +1,11 @@
 import Hexo from 'hexo';
 import { expect, test } from 'vitest';
-import { Config, calcWait, getOrDefault } from '../src/config';
+import { calcWait, getOrDefault } from '../src/config';
 
 test('getOrDefault should returns default config if hexo ctx has not plugins config.', () => {
   const h = new Hexo();
 
-  const expected: Config = {
+  const expected = {
     enable: true,
     server: {
       port: 4001
