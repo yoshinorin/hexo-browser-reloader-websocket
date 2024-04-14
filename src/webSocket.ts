@@ -32,7 +32,7 @@ export const createWebSocketServer = (config: Config) => {
     });
 
     ws.on('close', () => {
-      log.debug(`${p} Connection closed`);
+      log.debug(`${p} Connection closed.`);
     });
 
     ws.on('error', err => {
