@@ -4,7 +4,7 @@
   "description": "A hexo plugin. Automatically reloads the browser when files are modified while the hexo-server is running.",
   "main": "dist/index.js",
   "scripts": {
-    "prepublishOnly": "npm run clean && npm run build",
+    "prepublishOnly": "npm install && npm run clean && npm run build",
     "build": "tsc -b",
     "clean": "tsc -b --clean",
     "lint": "eslint .",
