@@ -23,6 +23,11 @@ export function notifier(this: Hexo) {
       //       if there are few post and pages or a lot of post and pages.
       //       Therefore, delay sending the message from the WebSocket server just a little bit.
       setTimeout(() => {
+        if (wss.clients.size === 0) {
+          log.warn(`${p} The client connection could not be established. Is the browser open?`);
+          return;
+        }
+
         wss.clients.forEach(client => {
           if (isReady(client.readyState)) {
             client.send(config.notification.message);
