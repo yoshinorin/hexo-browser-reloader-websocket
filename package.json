@@ -35,18 +35,18 @@
     "hexo"
   ],
   "dependencies": {
-    "ws": "8.18.0",
+    "ws": "8.18.1",
     "hexo-log": "4.1.0"
   },
   "devDependencies": {
     "@types/node": "20.14.9",
-    "@types/ws": "8.5.12",
-    "@vitest/coverage-v8": "2.1.1",
+    "@types/ws": "8.18.0",
+    "@vitest/coverage-v8": "3.0.9",
     "eslint": "9.23.0",
     "eslint-config-hexo": "6.0.0",
     "hexo": "7.3.0",
-    "typescript": "5.5.3",
-    "vitest": "2.1.1"
+    "typescript": "5.8.2",
+    "vitest": "3.0.9"
   },
   "engines": {
     "node": ">=18"
