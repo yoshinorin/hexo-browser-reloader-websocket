@@ -41,12 +41,12 @@
   "devDependencies": {
     "@types/node": "24.0.13",
     "@types/ws": "8.18.1",
-    "@vitest/coverage-v8": "3.2.4",
-    "eslint": "9.31.0",
+    "@vitest/coverage-v8": "4.0.2",
+    "eslint": "9.38.0",
     "eslint-config-hexo": "6.0.0",
-    "hexo": "7.3.0",
+    "hexo": "8.0.0",
     "typescript": "5.8.3",
-    "vitest": "3.2.4"
+    "vitest": "4.0.2"
   },
   "engines": {
     "node": ">=20"
